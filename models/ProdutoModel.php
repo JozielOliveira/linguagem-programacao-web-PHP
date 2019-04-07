@@ -3,7 +3,7 @@
 
     class ProdutoModel extends Model {
         public function lista(){
-            $sql = "SELECT * FROM produto";
+            $sql = "SELECT * FROM produtos";
             $resultado = $this->select($sql);
             $arrayCliente = array();
                     
