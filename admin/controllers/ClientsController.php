@@ -20,12 +20,19 @@
         }
 
         public function insertClientAction (){
+
             $cliente = array(
                 "name" => $_POST['name'],
                 "endereco" => $_POST['endereco'],
                 "email" => $_POST['email'],
-                "telefone" => $_POST['telefone']
+                "telefone" => $_POST['telefone'],
+                "foto" => "assets/img/".$_POST['telefone'].".jpg"
             );
+
+            if(isset($_FILES['foto'])) {
+                $this -> saveFile($_FILES['foto'], $cliente['telefone']);
+            }
+
             $this -> ClientModel -> insertClient ($cliente);
             
             header("Location: ?c=c&m=i");
@@ -43,8 +50,14 @@
                 "name" => $_POST['name'],
                 "endereco" => $_POST['endereco'],
                 "email" => $_POST['email'],
-                "telefone" => $_POST['telefone']
+                "telefone" => $_POST['telefone'],
+                "foto" => "assets/img/".$_POST['telefone'].".jpg"
             );
+
+            if(isset($_FILES['foto'])) {
+                $this -> saveFile($_FILES['foto'], $cliente['telefone']);
+            }
+            
             $this -> ClientModel -> updateClient($cliente);
 
             header("Location: ?c=c&m=i");
@@ -53,6 +66,8 @@
         public function deleteCliente (){
             if ($_GET['id'])
                 $this-> ClientModel -> deleteClient($_GET['id']);
+            if ($_GET['telefone'])
+                unlink('assets/img/'.$_GET['telefone'].'.jpg');
             header("Location: ?c=c&m=i");
         }
     }

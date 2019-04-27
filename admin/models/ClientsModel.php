@@ -22,13 +22,13 @@
             return $result;
         }
         public function insertClient($cliente){
-            $sql = "INSERT INTO clientes (name, endereco, email, telefone) VALUES ('".$cliente['name']."', '".$cliente['endereco']."', '".$cliente['email']."', '".$cliente['telefone']."' )";
+            $sql = "INSERT INTO clientes (name, endereco, email, telefone, foto) VALUES ('".$cliente['name']."', '".$cliente['endereco']."', '".$cliente['email']."', '".$cliente['telefone']."', '".$cliente['foto']."' )";
             $resultado = $this->select($sql);  
             return $resultado;
         }
 
         public function updateClient ($cliente) {
-            $sql = "UPDATE clientes SET name='".$cliente['name']."', endereco='".$cliente['endereco']."', email='".$cliente['email']."', telefone='".$cliente['telefone']."' WHERE idCliente='".$cliente['idClient']."'";
+            $sql = "UPDATE clientes SET name='".$cliente['name']."', endereco='".$cliente['endereco']."', email='".$cliente['email']."', telefone='".$cliente['telefone']."', foto='".$cliente['foto']." WHERE idCliente='".$cliente['idClient']."'";
             $resultado = $this->select($sql);  
             return $resultado;
         }

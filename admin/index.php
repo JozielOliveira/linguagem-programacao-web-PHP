@@ -55,6 +55,23 @@
             }
           }
         break;
+        case 'n' : 
+          require_once('controllers/NewsController.php');
+          $controller = new NewsController();
+          
+          if (!isset($_GET["a"])) {
+            $controller -> index();
+          } else {
+            switch ($_GET["a"]) {
+              case 'i' : $controller -> index(); break;
+              case 'c' : $controller -> insertNews(); break;
+              case 'ca' : $controller -> insertNewsAction(); break;
+              case 'u' : $controller -> updateNews($_GET["id"]); break;
+              case 'ua' : $controller -> updateNewsAcion(); break;
+              case 'd' : $controller -> deleteNews(); break;
+            }
+          }
+        break;
       }
     }
 
